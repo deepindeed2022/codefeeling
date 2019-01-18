@@ -3,6 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(practise)
 
 SET(TEST true CACHE bool "default build test")
+SET(CC_DISABLE_TIMING false CACHE bool "default not test time")
 
 if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
     if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

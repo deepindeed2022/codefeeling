@@ -9,15 +9,5 @@ typedef int errcode_t;
 #define CC_E_FAIL                           0xfffffffc  ///< 运行失败，内部错误 -4
 #define CC_E_PLATFORM_NOTSUPPORTED          0xfffffffb  ///< 不支持的平台 -5
 
-template <typename T>
-errcode_t printArr(T *arr, const size_t size)
-{
-    if(arr == nullptr || size <= 0) return CC_E_INVALIDARG;
-    for (size_t i = 0; i < size; ++i) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-    return CC_OK;
-}
 
 #endif

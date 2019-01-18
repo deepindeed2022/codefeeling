@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <util.h>
+#include "test_api.h"
 #include <ch1.h>
 TEST(Chapter1, InsertSort)
 {
@@ -9,4 +9,16 @@ TEST(Chapter1, InsertSort)
     for(int i = 0; i < 10; i++) ASSERT_EQ(expect_aa[i], aa[i]);
     ASSERT_EQ(CC_E_INVALIDARG, insert_sort(nullptr, 0));
     printArr(aa, 10);
+}
+
+TEST(Chapter1, InsertSortSMOKE) {
+    int size = 10000;
+    if(size > 1) {
+        std::vector<int> random_data = generate_int_array(size);
+        ASSERT_FALSE(std::is_sorted(random_data.begin(), random_data.end()));
+        __TIC__();
+        ASSERT_EQ(CC_OK, insert_sort(random_data.data(), random_data.size()));
+        __TOC__();
+        ASSERT_TRUE(std::is_sorted(random_data.begin(), random_data.end()));
+    }
 }
