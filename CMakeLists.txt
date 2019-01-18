@@ -2,6 +2,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(practise)
 
+SET(TEST true CACHE bool "default build test")
+
 if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
     if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         SET(NEWCXX_ENABLED_FLAG "-std=c++11 -stdlib=libc++ -Wall -O2")
