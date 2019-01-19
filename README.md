@@ -3,6 +3,7 @@ Before there were computers, there were algorithms. But now that there are compu
 
 ## Chapter 1
 - [insert sort](src/sort.cpp)
+- [merge sort](src/sort.cpp)
 
 
 ## How to Run
