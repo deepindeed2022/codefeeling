@@ -20,23 +20,28 @@ errcode_t insert_sort(int *arr, const int size)
 }
 
 static void combiled_two_part(int* arr, const int start, const int mid, const int end) {
-    int* tmp = new int[end - start];
-    int k = 0;
+	int* tmp = new int[end - start]; 
+	int k = 0;
     int i = start, j = mid;
-    for(;i<mid && j < end;) tmp[k++] = (arr[i] < arr[j]) ? arr[i++] : arr[j++];
-    for(; i < mid;) tmp[k++] = arr[i++];
-    for(; j < mid;) tmp[j++] = arr[j++];
-    memcpy(arr, tmp, sizeof(int)*(end - start));
+    
+	for(;i < mid && j < end;) 
+		tmp[k++] = (arr[i] < arr[j]) ? arr[i++] : arr[j++];
+    
+	for(; i < mid; tmp[k++] = arr[i++]);
+    for(; j < end; tmp[k++] = arr[j++]);
+	for(k=0, i = start; i < end;) arr[i++] = tmp[k++];
     delete[] tmp;
 }
-static void merge_sort_part(int*arr, const int start, const int end){
-    if(start >=  end) return;
+
+errcode_t merge_sort(int*arr, const int start, const int end){
+    if(nullptr == arr) 
+		return CC_E_INVALIDARG;
+	else if(end - start < 2) 
+		return CC_OK;
     int mid = (start + end) >> 1;
-    merge_sort_part(arr, start, mid);
-    merge_sort_part(arr, mid, end);
+    merge_sort(arr, start, mid);
+    merge_sort(arr, mid, end);
     combiled_two_part(arr, start, mid, end);
+	return CC_OK;
 }
-static 
-errcode_t merge_sort(int* arr, const int size){
-    merge_sort_part(arr, 0, size);
-}
+
