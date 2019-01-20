@@ -1,4 +1,6 @@
 #include <buLec01.h>
+// Euclidean algorithm
+// more efficent algorithm: https://en.wikipedia.org/wiki/Binary_GCD_algorithm
 int gcd(int a, int b) {
     if(a < b) 
         return gcd(b, a);
@@ -6,8 +8,8 @@ int gcd(int a, int b) {
         return 1;
     int c = a % b;
     while(c != 0) {
-        b = a;
-        a = c;
+        a = b;
+        b = c;
         c = a % b;
     }
     return b; 
