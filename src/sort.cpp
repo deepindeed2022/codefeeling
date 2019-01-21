@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ch1.h>
 #include <cstring>
+#include <limits>
 errcode_t insert_sort(int *arr, const int size)
 {
     if(arr == nullptr || size <= 0) return CC_E_INVALIDARG;
@@ -18,7 +19,24 @@ errcode_t insert_sort(int *arr, const int size)
     }
     return CC_OK;
 }
-
+/***********************************************************
+void MERGET(int*A, int p, int q, int r) {
+    int n1 = q - p + 1;
+    int n2 = r - q;
+    int* L = new int[n1];
+    int* R = new int[n2];
+    for(int i = 0; i < n1-1; i++) L[i] = A[p+i-1];
+    for(int j = 0; j < n2-1; j++) R[j] = A[q + j];
+    L[n1] = std::numeric_limits<int>::max();
+    L[n1] = std::numeric_limits<int>::max();
+    int i = 0;
+    int j = 0;
+    for(int k = p; k < r; k++)
+        A[k] = L[i] < R[j] ? L[i++]: R[j++];
+    delete []L;
+    delete []R;
+}
+*************************************************************/
 static void combiled_two_part(int* arr, const int start, const int mid, const int end) {
 	int* tmp = new int[end - start]; 
 	int k = 0;

@@ -1,6 +1,7 @@
 #include <buLec01.h>
 // Euclidean algorithm
 // more efficent algorithm: https://en.wikipedia.org/wiki/Binary_GCD_algorithm
+// time: https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
 int gcd(int a, int b) {
     if(a < b) 
         return gcd(b, a);
