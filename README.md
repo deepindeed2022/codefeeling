@@ -4,7 +4,17 @@ Before there were computers, there were algorithms. But now that there are compu
 ## Chapter 1
 - [insert sort](src/sort.cpp)
 - [merge sort](src/sort.cpp)
+- [gcb(辗转相除法，欧几里得算法)](src/buLec01.cpp)
 
+## Chaper 2
+
+- [exist target sum in array](src/ch2.cpp)
+- [count_inversion](src/ch2.cpp)
+
+
+## Time analysis
+Theta, Big O, Omega
+![@时间复杂度表示符号](./images/TimeAnalysis.png)
 
 ## How to Run
 `mkdir build && cd build`
