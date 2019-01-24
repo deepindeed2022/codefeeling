@@ -7,9 +7,6 @@
 int get_int_rand();
 std::vector<int> generate_int_array(const size_t size);
 
-
-
-
 template <typename T>
 errcode_t printArr(T *arr, const size_t size)
 {
