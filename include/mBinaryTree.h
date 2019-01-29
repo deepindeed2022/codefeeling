@@ -8,4 +8,6 @@ typedef struct BTreeNode {
     :value(_value), left(nullptr), right(nullptr)
     { }
 } BTreeNode;
+BTreeNode* construct(int* preorder, int*inorder, int length);
+BTreeNode* getNext(BTreeNode* pNode);
 #endif
