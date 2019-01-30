@@ -1,6 +1,13 @@
 #include "mBinaryTree.h"
 #include <exception>
-
+#include <cstdio>
+#include <string>
+class mException: public std::exception {
+public:
+    mException(const char* info) {
+        fprintf(stderr,"%s\d", info);
+    }
+};
 static BTreeNode* construct_internal(
     int* startPreOrder, int* endPreOrder,
     int* startInOrder, int* endInOrder
@@ -12,7 +19,7 @@ static BTreeNode* construct_internal(
         if(startInOrder == endInOrder && *startPreOrder == *startInOrder){
             return root;
         } else {
-            throw std::exception("Invalid input");
+            throw mException("Invalid input");
         }
     }
     int* rootInOrder = startInOrder;
@@ -20,7 +27,7 @@ static BTreeNode* construct_internal(
         ++rootInOrder;
     //
     if(rootInOrder == endInOrder && *rootInOrder != rootValue)
-        throw std::exception("Invalid input");
+        throw mException("Invalid input");
     int leftLength = rootInOrder - startInOrder;
     int* leftPreorderEnd = startPreOrder+leftLength;
     if(leftLength > 0) {
@@ -39,4 +46,8 @@ BTreeNode* construct(int* preorder, int* inorder, int length) {
         return nullptr;
     return construct_internal(preorder, preorder+length-1,inorder,inorder+length-1);
 }
-BTreeNode* getNext(BTreeNode* pNode);
+
+
+BTreeNode* getNext(BTreeNode* pNode){
+    return nullptr;
+}
