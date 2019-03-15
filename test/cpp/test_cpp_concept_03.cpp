@@ -2,6 +2,7 @@
  * 测试cpp中的class在内存中所占空间大小
  */
 #include <cstdio>
+#include <gtest/gtest.h>
 class A {};
 class B {
 public:
@@ -13,10 +14,12 @@ public:
     C() {}
     virtual ~C() {}
 };
-int main(int argc, char* argv[])
+TEST(cpp_concept, sizeof_class)
 {
-        printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
-        return 0;
+    printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
+    ASSERT_EQ(1, sizeof(A));
+    ASSERT_EQ(1, sizeof(B));
+    ASSERT_EQ(8, sizeof(C));
 }
 /**************************************************************************
 分析：答案是1, 1, 8。

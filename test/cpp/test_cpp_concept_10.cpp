@@ -1,23 +1,23 @@
 #include <cstdio>
-int main(int argc, char* argv[]) {
-
+#include <gtest/gtest.h>
+TEST(cpp_concept, chararr_and_string_compare)
+{
     char str1[] = "hello world";
     char str2[] = "hello world";
 
-    const char* str3 = "hello world";
-    const char* str4 = "hello world";
+    const char *str3 = "hello world";
+    const char *str4 = "hello world";
 
-    if(str1 == str2)
+    if (str1 == str2)
         printf("str1(%p) and str2(%p) are same.\n", str1, str2);
     else
         printf("str1(%p) and str2(%p) are not same.\n", str1, str2);
 
-    if(str3 == str4)
+    if (str3 == str4)
         printf("str3(%p) and str4(%p) are same.\n", str3, str4);
     else
         printf("str3(%p) and str4(%p) are not same.\n", str3, str4);
 
-    return 0;
 }
 //
 // 答案：输出两行。第一行是str1 and str2 are not same，第二行是str3 and str4 are same。

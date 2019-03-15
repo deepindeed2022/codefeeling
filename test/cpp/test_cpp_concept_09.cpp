@@ -1,4 +1,5 @@
 #include <iostream>
+#include <gtest/gtest.h>
 class A {
 public:
 	A() {
@@ -19,11 +20,10 @@ public:
 	}
 };
 
-int main(int argc, char* argv[])
+TEST(cpp_concept, class_init_del_seq)
 {
 	A* pA = new B();
 	delete pA;
-	return 0;
 }
 //
 // 答案：输出三行，分别是：A is created. B is created. A is deleted。

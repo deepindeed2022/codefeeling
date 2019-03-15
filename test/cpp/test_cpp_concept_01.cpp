@@ -1,4 +1,5 @@
 #include <iostream>
+#include <gtest/gtest.h>
 class A {
 public:
     virtual void Fun(int number = 10) {
@@ -13,7 +14,7 @@ public:
     }
 };
 
-int main()
+TEST(cpp_concept, default_value)
 {
     B b;
     A &a = b;

@@ -1,6 +1,6 @@
 #include <cstring>
 #include <cstdio>
-
+#include <gtest/gtest.h>
 char* GetString1()
 {
     char p[] = "Hello World";
@@ -12,11 +12,10 @@ char* GetString2()
     return p;
 }
 
-int main(int argc, char* argv[])
+TEST(cpp_concept, ret_temp_char_arr)
 {
     printf("GetString1 returns: %s. \n", GetString1());
     printf("GetString2 returns: %s. \n", GetString2());
-    return 0;
 }
 /***************************************************************************
 答案：输出两行，第一行GetString1 returns: 后面跟的是一串随机的内容，而第二行GetString2 returns: Hello World. 

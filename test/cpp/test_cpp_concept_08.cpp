@@ -1,17 +1,18 @@
-// #include <cstdio>
-// int SizeOf(char pString[]) {
-// 	return sizeof(pString);
-// }
-// int main(int argc, char* argv[]) {
-// 	const char* pString1 = "google";
-// 	int size1 = sizeof(pString1);
-// 	int size2 = sizeof(*pString1);
-// 	char pString2[100] = "google";
-// 	int size3 = sizeof(pString2);
-// 	int size4 = SizeOf(pString2);
-// 	printf("%d, %d, %d, %d\n", size1, size2, size3, size4);
-// 	return 0;
-// }
+#include <cstdio>
+#include <gtest/gtest.h>
+int SizeOf(char pString[]) {
+	return sizeof(pString);
+}
+TEST(cpp_concept, sizeof_values)
+{
+    const char *pString1 = "google";
+    int size1 = sizeof(pString1);
+    int size2 = sizeof(*pString1);
+    char pString2[100] = "google";
+    int size3 = sizeof(pString2);
+    int size4 = SizeOf(pString2);
+    printf("%d, %d, %d, %d\n", size1, size2, size3, size4);
+}
 
 // 8, 1, 100, 8
 // pString1是一个指针。在64位机器上，任意指针都占8个字节的空间。

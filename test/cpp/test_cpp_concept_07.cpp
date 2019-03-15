@@ -1,4 +1,5 @@
 #include <iostream>
+#include <gtest/gtest.h>
 #define ERROR 0
 
 class A {
@@ -23,13 +24,12 @@ private:
 	int value;
 };
 
-int main(int argc, char* argv[])
+TEST(cpp_concept, copy_construct)
 {
 	// A a(10);
 	A a = 10;
 	A b = a;
 	b.Print();
-	return 0;
 }
 
 // 编译错误。
