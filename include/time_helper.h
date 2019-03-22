@@ -5,31 +5,17 @@
 #include <cstdio>
 
 #ifdef _MSC_VER
-#include <windows.h>
-#include <WinSock.h>
-static int gettimeofday(struct timeval *tp, void *tzp)
-{
-    time_t clock;
-    struct tm tm;
-    SYSTEMTIME wtm;
-    GetLocalTime(&wtm);
-    tm.tm_year = wtm.wYear - 1900;
-    tm.tm_mon = wtm.wMonth - 1;
-    tm.tm_mday = wtm.wDay;
-    tm.tm_hour = wtm.wHour;
-    tm.tm_min = wtm.wMinute;
-    tm.tm_sec = wtm.wSecond;
-    tm.tm_isdst = -1;
-    clock = mktime(&tm);
-    tp->tv_sec = clock;
-    tp->tv_usec = wtm.wMilliseconds * 1000;
-    return (0);
-}
-#else
+int clock_gettime(int type, struct timespec* ct);
+int gettimeofday(struct timeval *tp, void *tzp);
+#else // ifdef _WIN32
 #include <unistd.h>
 #include <sys/time.h>
 #include <time.h>
 #endif
+
+void time_spendMs(struct timespec* ptime1, struct timespec* ptime2, char* des);
+void time_print(struct timespec* ptime, char* des);
+
 
 #define __TIC__()                                \
     struct timeval __timing_start, __timing_end; \
@@ -48,5 +34,5 @@ static int gettimeofday(struct timeval *tp, void *tzp)
         fprintf(stdout, "TIME(ms): %lf\n", __timing_gap); \
     } while (0)
 
-#endif
-#endif
+#endif // CC_DISABLE_TIMING
+#endif // ALGORITHM_TIME_HELPER_H_
