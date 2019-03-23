@@ -19,12 +19,13 @@ public:
 		std::cout << "B is deleted." << std::endl;
 	}
 };
-
+#ifndef _WIN32
 TEST(cpp_concept, class_init_del_seq)
 {
 	A* pA = new B();
 	delete pA;
 }
+#endif
 //
 // 答案：输出三行，分别是：A is created. B is created. A is deleted。
 //

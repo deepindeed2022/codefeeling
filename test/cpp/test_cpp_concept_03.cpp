@@ -19,7 +19,11 @@ TEST(cpp_concept, sizeof_class)
     printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
     ASSERT_EQ(1, sizeof(A));
     ASSERT_EQ(1, sizeof(B));
+#if defined(_WIN32) || defined(__x86__)
+    ASSERT_EQ(4, sizeof(C));
+#else
     ASSERT_EQ(8, sizeof(C));
+#endif
 }
 /**************************************************************************
 分析：答案是1, 1, 8。
