@@ -1,4 +1,4 @@
-#include <cstdio>
+﻿#include <cstdio>
 #include <gtest/gtest.h>
 int SizeOf(char pString[]) {
 	return sizeof(pString);

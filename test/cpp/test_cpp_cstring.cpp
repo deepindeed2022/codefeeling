@@ -1,4 +1,4 @@
-#include <cstring>
+﻿#include <cstring>
 #include <cstdio>
 #include <gtest/gtest.h>
 char* GetString1()

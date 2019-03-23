@@ -1,6 +1,5 @@
-#include <iostream>
+﻿#include <iostream>
 #include <gtest/gtest.h>
-#define ERROR 0
 
 class A {
 public:

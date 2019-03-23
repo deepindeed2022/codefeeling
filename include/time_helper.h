@@ -1,10 +1,12 @@
 #ifndef ALGORITHM_TIME_HELPER_H_
 #define ALGORITHM_TIME_HELPER_H_
 #ifndef CC_DISABLE_TIMING
-#include <ctime>
+#include <time.h>
 #include <cstdio>
 
 #ifdef _MSC_VER
+#include <Windows.h>
+#include <WinSock.h>
 int clock_gettime(int type, struct timespec* ct);
 int gettimeofday(struct timeval *tp, void *tzp);
 #else // ifdef _WIN32

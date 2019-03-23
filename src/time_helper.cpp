@@ -3,10 +3,7 @@
 #include <ctime>
 #include <cstdio>
 
-#ifdef _WIN32 || defined(_MSC_VER)
-#include <Windows.h>
-#include <WinSock.h>
-
+#ifdef _MSC_VER
 static BOOL g_first_time = 1;
 static LARGE_INTEGER g_counts_per_sec;
 

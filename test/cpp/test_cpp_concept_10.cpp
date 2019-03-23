@@ -1,4 +1,4 @@
-#include <cstdio>
+﻿#include <cstdio>
 #include <gtest/gtest.h>
 TEST(cpp_concept, chararr_and_string_compare)
 {
