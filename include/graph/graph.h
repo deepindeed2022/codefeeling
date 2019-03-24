@@ -21,8 +21,10 @@ public:
 		nextarc = arc.nextarc;
 	}
 	ArcNode(const ArcNode* arc) {
-		adjvex = arc->adjvex;
-		nextarc = arc->nextarc;
+        if(arc!=nullptr) {
+            adjvex = arc->adjvex;
+            nextarc = arc->nextarc;
+        }
 	}
     uint32_t  adjvex;
     std::shared_ptr<ArcNode> nextarc;
@@ -61,14 +63,24 @@ public:
             bool result = this->create_(fin);
         }
     }
+    std::vector<T> get_arcNodes(const uint32_t i) {
+        std::vector<T> vec;
+        std::shared_ptr<ArcNode> arcnode = vertices[i].firstarc;
+        while(arcnode.get() != nullptr) {
+            vec.push_back(arcnode->adjvex + 'A');
+            arcnode = arcnode->nextarc;
+        }
+        return vec;
+    }
     ~ALGraph() {
     }
     void print_Graph(std::ostream& out) {
+         out << "V\tin\tout\tsum\n";
         for(uint32_t i = 0; i < this->vexnum; i++) {
             uint32_t sum = this->vertices[i].in_cnt + this->vertices[i].out_cnt;
-            out << this->vertices[i].data << " "
-                << this->vertices[i].in_cnt << " "
-                << this->vertices[i].out_cnt << " "
+            out << this->vertices[i].data << "\t"
+                << this->vertices[i].in_cnt << "\t"
+                << this->vertices[i].out_cnt << "\t"
                 << sum << std::endl;
         }
     }
@@ -93,8 +105,10 @@ private:
             e = q - 'A';
             vertices[s].out_cnt++;
             vertices[e].in_cnt++;
-			ArcNode* anode = new ArcNode(e, vertices[s].firstarc.get());
-			//vertices[s].firstarc = anode;
+			ArcNode* anode = new ArcNode();
+			anode->adjvex = e;
+			anode->nextarc = std::make_shared<ArcNode>(vertices[s].firstarc.get());
+			vertices[s].firstarc = std::make_shared<ArcNode>(anode);
         }
     }
     uint32_t vexnum; // 图节点的个数
