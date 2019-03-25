@@ -53,7 +53,7 @@ public:
     ALGraph() = default;
     ALGraph(uint32_t _vexnum, uint32_t _arcnum)
         : vexnum(_vexnum), arcnum(_arcnum) {
-        vectices.resize(arcnum);
+        vertices.resize(arcnum);
     }
     ALGraph(const std::string& infile) {
         std::ifstream fin(infile);
