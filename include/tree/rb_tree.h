@@ -13,15 +13,34 @@ enum ColorType {
     RED,
 };
 
-template <typename K, typename V>
-struct RB_Node {
-    K key;      // 键值，用于索引，可比较类型或是有相应的比较器
-    V value;    // 存储的数据
-    RB_Node* l_child, *r_child, *parent;
+struct rb_node_base {
+    typedef rb_node_base *base_ptr;
+    base_ptr l_child;
+    base_ptr r_child;
+    base_ptr parent;
     ColorType type;
+    
+    static base_ptr minimum(base_ptr x) {
+        // 一直往左走，就能找到红黑树的最小值节点
+        while (x->l_child != 0)
+            x = x->l_child;
+        return x;
+    }
+    static base_ptr maximum(base_ptr x) {
+        // 一直往右走，就能找到红黑树的最大值节点
+        while (x->r_child != 0) x = x->r_child;
+        return x;
+    }
 };
 
-errcode_t rb_tree_add_node(RB_Node<int, int>* root, int k, int v);
-errcode_t rb_tree_del_node(RB_Node<int, int>* root, int k);
-errcode_t dump_rb_tree(RB_Node<int, int>* root);
+template <typename K=int, typename V=int>
+struct rb_tree_node: public rb_node_base {
+    typedef rb_tree_node<K, V>* link_type;
+    K key;
+    V value;
+};
+
+errcode_t rb_tree_add_node(rb_tree_node<int, int> *root, int k, int v);
+errcode_t rb_tree_del_node(rb_tree_node<int, int> *root, int k);
+errcode_t dump_rb_tree(rb_tree_node<int, int> *root);
 #endif
