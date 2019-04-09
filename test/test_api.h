@@ -9,6 +9,7 @@
 #include <Windows.h>
 #else
 #include <cstdlib>
+#include <cstring>
 #endif
 int get_int_rand();
 std::vector<int> generate_int_array(const size_t size);
@@ -18,10 +19,11 @@ inline std::string test_path(const std::string& name) {
     memset(acCanonicalPath, 0, PATH_MAX);
 #ifdef _WIN32
     _fullpath(acCanonicalPath, "./", PATH_MAX);
-#else
-    realpath("./", acCanonicalPath, PATH_MAX);
-#endif
     return std::string(acCanonicalPath) + name;
+#else
+    realpath("./", acCanonicalPath);
+    return std::string(acCanonicalPath) +"/" +name;
+#endif
 }
 template <typename T>
 errcode_t printArr(T *arr, const size_t size)
