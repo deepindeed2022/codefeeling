@@ -1,9 +1,12 @@
 #include <gtest/gtest.h>
-#include "test_api.h"
-#include <editdist.h>
 #include <cstdio>
+#include "editdist.h"
+#include "test_api.h"
+#include <string>
+
 TEST(EDITDIST, editdistO3){
-    char src[] = "hello";
-    char dst[] = "heool";
-    fprintf(stderr, "edit distance:%d\n", editDistance(src, dst));
+    const char* src = "hello";
+    const char* dst = "heool";
+    ASSERT_EQ(3, editDistance(src, dst));
+    ASSERT_EQ(3, minEditDistance(src, dst));
 }

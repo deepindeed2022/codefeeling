@@ -1,4 +1,6 @@
 #ifndef _INCLUDE_EDIT_DIST_H_
 #define _INCLUDE_EDIT_DIST_H_
-int editDistance(char* src, char*dst);
+#include <string>
+int editDistance(const char* src, const char*dst);
+int minEditDistance(std::string src, std::string dst);
 #endif

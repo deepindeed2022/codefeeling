@@ -58,3 +58,29 @@ Theta, Big O, Omega
 ```
 其中只需要对所在文件夹名称和CMakeLists.txt进行相应的改动，就可以重新开辟新的项目。
 更多第三方库，可以参考项目[LibsForDev](https://github.com/cwlseu/LibsForDev)
+
+
+## FAQ
+1. `Error expected initializer before 'int'` 或者
+In file included from /usr/include/features.h:374:0,
+                 from /usr/include/x86_64-linux-gnu/c++/4.9/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/4.9/bits/c++config.h:430,
+                 from /usr/include/c++/4.9/string:38,
+                 from /home/sensetime/Repo/IntroductionToAlgorithm/include/editdist.h:3,
+                 from /home/sensetime/Repo/IntroductionToAlgorithm/src/editdist.cpp:1:
+/usr/include/string.h:27:1: error: expected initializer before ‘extern’
+ __BEGIN_DECLS
+ ^
+In file included from /usr/lib/gcc/x86_64-linux-gnu/4.9/include/x86intrin.h:27:0,
+                 from /usr/include/x86_64-linux-gnu/c++/4.9/bits/opt_random.h:33,
+                 from /usr/include/c++/4.9/random:50,
+                 from /usr/include/c++/4.9/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.9/algorithm:62,
+                 from /home/sensetime/Repo/IntroductionToAlgorithm/src/editdist.cpp:6:
+/usr/lib/gcc/x86_64-linux-gnu/4.9/include/ia32intrin.h:53:25: error: expected declaration before end of line
+ #pragma GCC push_options
+                         ^
+
+可能是你在函数定义的地方少写了";"
+
+http://www.cplusplus.com/forum/general/108022/

@@ -39,5 +39,6 @@ TEST(Perm, printall)
 {
     std::string s("abc");
     Combination(s.c_str());
-    fprintf(stderr, "total size:%d\n", count);
+    ASSERT_EQ(7, count);
+    // fprintf(stderr, "total size:%d\n", count);
 }
