@@ -9,12 +9,26 @@ Before there were computers, there were algorithms. But now that there are compu
 ## Chaper 2
 
 - [exist target sum in array](src/ch2.cpp)
-- [count_inversion](src/ch2.cpp)
+- [统计逆序数](src/ch2.cpp)
 
+<!-- ## 递归
+- gcd
+- 汉诺塔 -->
+
+## Divide and Conquer
+- [统计逆序数](src/ch2.cpp)
+
+## DP
+- [最小编辑距离](src/editdist.cpp)
+    - 递归方法
+    - 矩阵递推法
+    - 矩阵递推法改进版（仅仅使用一个向量实现递推，减少空间）
+- [最少换乘消费]
 
 ## Time analysis
-Theta, Big O, Omega
+时间复杂度分析中常见的三个表示时间的符号$\Theta$, $O$, $\Omega$, 如下图所示：
 ![@时间复杂度表示符号](./images/TimeAnalysis.png)
+从图中可以出$f(n) = O(g(n))$表示存在常数$c$,当$n > n_0$之后，始终有$f(n) < cg(n)$, 也就说$O$定义了一个上限，这也是三个中最常用的符号。
 
 ## How to Run
 `mkdir build && cd build`
