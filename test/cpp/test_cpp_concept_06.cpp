@@ -10,11 +10,16 @@ public:
 	void Print(){
 	    std::cout << "n1: " << n1 << ", n2: " << n2 << std::endl;
 	}
+	int get_n1() { return n1; }
+	int get_n2() { return n2; }
 };
 TEST(cpp_concept, init_class_param)
 {
 	A a;
-	a.Print();
+	// a.Print();
+	ASSERT_NE(2, a.get_n1());
+	ASSERT_EQ(0, a.get_n2());
+	
 }
 /*****************************************************************************
 	答案：输出n1是一个随机的数字，n2为0。

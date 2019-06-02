@@ -16,7 +16,7 @@ public:
 };
 TEST(cpp_concept, sizeof_class)
 {
-    printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
+    // printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
     ASSERT_EQ(1, sizeof(A));
     ASSERT_EQ(1, sizeof(B));
 #if defined(_WIN32) || defined(__x86__)
