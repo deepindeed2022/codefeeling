@@ -30,6 +30,11 @@ Before there were computers, there were algorithms. But now that there are compu
 ![@时间复杂度表示符号](./images/TimeAnalysis.png)
 从图中可以出$f(n) = O(g(n))$表示存在常数$c$,当$n > n_0$之后，始终有$f(n) < cg(n)$, 也就说$O$定义了一个上限，这也是三个中最常用的符号。
 
+## 递归表达式 => 时间复杂度分析
+- substituion method
+- recursion-tree method
+- master method
+
 ## How to Run
 `mkdir build && cd build`
 `cmake -DTEST=1 .. && make -j4 && make install`
