@@ -30,11 +30,13 @@ errcode_t printArr(T *arr, const size_t size)
 {
     if (arr == nullptr || size <= 0)
         return CC_E_INVALIDARG;
+#if CONFIG_DEBUG
     for (size_t i = 0; i < size; ++i)
     {
         std::cout << arr[i] << " ";
     }
     std::cout << std::endl;
+#endif
     return CC_OK;
 }
 

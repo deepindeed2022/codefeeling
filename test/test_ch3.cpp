@@ -7,7 +7,9 @@ TEST(Chapter3, maximum_subarray)
 	printArr(aa, 10);
 	int start = 0;
 	int end = 0;
+	__TIC__();
 	ASSERT_EQ(6, maximum_subarray(aa, 10, &start, &end));
+	__TOC__();
 	ASSERT_EQ(start, 3);
 	ASSERT_EQ(end, 6);
 }

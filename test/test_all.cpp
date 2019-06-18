@@ -1,6 +1,5 @@
 
 #include <gtest/gtest.h>
-#include <practise.h>
 
 int main(int argc, char *argv[])
 {

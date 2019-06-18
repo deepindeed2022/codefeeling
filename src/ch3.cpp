@@ -20,6 +20,7 @@ int maximum_subarray(int* arr, const int size, int* start, int* end) {
             res = dp[i];
         }
     }
+    delete[] dp;
     int tmp = 0;
     for(int i = *end; i >=0; i--) {
         tmp += arr[i];
