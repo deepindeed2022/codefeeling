@@ -1,12 +1,8 @@
 // #include "sort_algo.h"
 #include <iostream>
+#include <algorithm>
 void heap_sort(int* arr, const int size) {
-
-}
-int main(int argc, char const *argv[])
-{
-	std::cout << "test heap sort" << std::endl;
-
-	std::cout << std::endl;
-	return 0;
+	std::vector<int> v(arr, arr+size);
+	std::sort_heap (v.begin(),v.end());
+	memcpy(arr, v.data(), size*sizeof(int));
 }
