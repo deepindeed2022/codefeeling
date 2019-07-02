@@ -7,8 +7,8 @@ ENDIF()
 
 SET(TEST true CACHE bool "default build test")
 SET(CC_DISABLE_TIMING false CACHE bool "default not test time")
-SET(TARGET_OS Android CACHE string "default Windows, support (Windows, Linux, Android)")
-SET(TARGET_ARCH armv7 CACHE string "default x86_64, support (armv7, aarch64, x86_64)")
+SET(TARGET_OS Linux CACHE string "default Windows, support (Windows, Linux, Android)")
+SET(TARGET_ARCH x86_64 CACHE string "default x86_64, support (armv7, aarch64, x86_64)")
 
 IF(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
     IF(TARGET_OS STREQUAL "Linux" AND TARGET_ARCH STREQUAL "x86_64")

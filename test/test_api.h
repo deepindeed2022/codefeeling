@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <cstring>
 #endif
+#define CONFIG_DEBUG 1
 int get_int_rand();
 std::vector<int> generate_int_array(const size_t size);
 inline std::string test_path(const std::string& name) {
