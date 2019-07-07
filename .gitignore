@@ -2,3 +2,4 @@
 build
 install
 settings.json
+.vscode/*
