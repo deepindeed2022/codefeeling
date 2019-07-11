@@ -2,6 +2,9 @@
 #include <iostream>
 #include <algorithm>
 #include <cstring>
+class Heap{
+
+};
 void heap_sort(int* arr, const int size) {
 	std::vector<int> v(arr, arr+size);
 	std::sort_heap (v.begin(),v.end());
