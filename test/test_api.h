@@ -13,7 +13,8 @@
 #endif
 #define CONFIG_DEBUG 1
 int get_int_rand();
-std::vector<int> generate_int_array(const size_t size);
+static int random_range = 1000;
+std::vector<int> generate_int_array(const size_t size, const int range=random_range);
 inline std::string test_path(const std::string& name) {
 #define PATH_MAX 128
     char acCanonicalPath[PATH_MAX];

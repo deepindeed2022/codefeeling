@@ -1,12 +1,47 @@
-// #include "sort_algo.h"
+// https://blog.csdn.net/u013384984/article/details/79496052
+#include "sort_algo.h"
 #include <iostream>
 #include <algorithm>
 #include <cstring>
-class Heap{
 
-};
+
+// 参数：
+// i为当前节点下标，m为调整堆的大小
+// 沿着较大的孩子节点向下筛选，j为较大的记录的下标,
+// 最终arr[j]中存储的结果是最大值
+void heap_adjust(int* arr, int i, int m) {
+	int current = arr[i];
+	for(int j = 2*i; j <= m; j<<=1){
+		if(j < m && arr[j] < arr[j+1]) j++;
+		if(current > arr[j]) break;
+		arr[i] = arr[j]; 
+		i = j;
+	}
+	arr[i] = current;
+}
+
+/// 参数说明:
+//		arr采用[1..size]的下标方式
 void heap_sort(int* arr, const int size) {
-	std::vector<int> v(arr, arr+size);
-	std::sort_heap (v.begin(),v.end());
-	memcpy(arr, v.data(), size*sizeof(int));
+	// 按照完全二叉树的特点，从**最后一个非叶子节点**开始，对于整棵树进行大根堆的调整
+	// 也就是说，是按照**自下而上**，每一层都是**自右向左**来进行调整的
+	// 注意，这里元素的索引是从1开始的
+	// 另一件需要注意的事情，这里的建堆，是用堆调整的方式来做的
+	// 堆调整的逻辑在建堆和后续排序过程中复用的
+	for(int i = size/2; i >= 1; --i) {
+		heap_adjust(arr, i, size);
+	}
+	// 可以参照sort中的调用逻辑，在堆建成，且完成第一次交换之后，实质上i = 1；也就是说，是从根所在的最小子树开始调整的
+	// 接下来的讲解，都是按照i的初始值为1来讲述的
+	// 这一段很好理解，如果i=1；则j=2， j+1=3
+	// 实质上，就是根节点和其左右子节点进行比较，让j指向这个不超过三个节点的子树中最大的值
+	// 这里，必须要说下为什么j值是跳跃性的。
+	// 首先，举个例子，如果a[1] > a[2] && a[1] > a[3],说明1,2，3这棵树不需要调整，那么，下一步该到哪个节点了呢？肯定是a[2]所在的子树了，
+	// 也就是说，是以本节点的左子节点为根的那棵小的子树
+	// 而如果a[1] < a[3]呢，那就调整a[1]和a[3]的位置，然后继续调整以a[3]为根节点的那棵子树，而且肯定是从左子树开始调整的
+	// 所以，这里面的用意就在于，自上而下，自左向右一点点调整整棵树的部分，直到每一颗小子树都满足大根堆的规律为止
+	for(int i = size; i >= 1; i--) {
+		std::swap(arr[1], arr[i]);
+		heap_adjust(arr, 1, i - 1);
+	}
 }

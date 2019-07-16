@@ -11,7 +11,7 @@ void func(const int id, const int k) {
 	// mt.lock();
 	for(int i = 1; i <= k; ++i)
 		s += i;
-	std::cout << "total£¨" << id <<")="<<s<< std::endl;
+	std::cout << "total(" << id <<")=" << s << std::endl;
 	// mt.unlock();
 	std::cout<< "thread " << ++kMultiCount << " finished\n";
 }
