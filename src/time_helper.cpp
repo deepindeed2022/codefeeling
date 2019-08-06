@@ -1,4 +1,4 @@
-#ifndef CC_DISABLE_TIMING
+#ifndef CF_DISABLE_TIMING
 #include "time_helper.h"
 #include <ctime>
 #include <cstdio>

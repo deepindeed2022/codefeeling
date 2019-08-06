@@ -46,9 +46,9 @@ static int combiled_inversion(int *arr, const int start, const int mid, const in
 static int count_inversion(int *arr, const int start, const int end)
 {
 	if (nullptr == arr)
-		return CC_E_INVALIDARG;
+		return CF_E_INVALIDARG;
 	else if (end - start < 2)
-		return CC_OK;
+		return CF_OK;
 	int mid = (start + end) >> 1;
 	int a = count_inversion(arr, start, mid);
 	int b = count_inversion(arr, mid, end);

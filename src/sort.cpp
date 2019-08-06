@@ -4,7 +4,7 @@
 #include <limits>
 errcode_t insert_sort(int *arr, const int size)
 {
-    if(arr == nullptr || size <= 0) return CC_E_INVALIDARG;
+    if(arr == nullptr || size <= 0) return CF_E_INVALIDARG;
     for (int i = 1; i < size; i++)
     {
         int key = arr[i];
@@ -17,7 +17,7 @@ errcode_t insert_sort(int *arr, const int size)
         // 为什么是j+1? 因为while循环结束有两种条件: 1: j < 0 2.arr[j] < key
         arr[j + 1] = key;
     }
-    return CC_OK;
+    return CF_OK;
 }
 /***********************************************************
 void MERGET(int*A, int p, int q, int r) {
@@ -53,13 +53,13 @@ static void combiled_two_part(int* arr, const int start, const int mid, const in
 
 errcode_t merge_sort(int*arr, const int start, const int end){
     if(nullptr == arr) 
-		return CC_E_INVALIDARG;
+		return CF_E_INVALIDARG;
 	else if(end - start < 2) 
-		return CC_OK;
+		return CF_OK;
     int mid = (start + end) >> 1;
     merge_sort(arr, start, mid);
     merge_sort(arr, mid, end);
     combiled_two_part(arr, start, mid, end);
-	return CC_OK;
+	return CF_OK;
 }
 

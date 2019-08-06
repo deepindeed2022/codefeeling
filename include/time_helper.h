@@ -1,6 +1,6 @@
 #ifndef ALGORITHM_TIME_HELPER_H_
 #define ALGORITHM_TIME_HELPER_H_
-#ifndef CC_DISABLE_TIMING
+#ifndef CF_DISABLE_TIMING
 #include <time.h>
 #include <cstdio>
 
@@ -36,5 +36,5 @@ void time_print(struct timespec* ptime, char* des);
         fprintf(stdout, "TIME(ms): %lf\n", __timing_gap); \
     } while (0)
 
-#endif // CC_DISABLE_TIMING
+#endif // CF_DISABLE_TIMING
 #endif // ALGORITHM_TIME_HELPER_H_

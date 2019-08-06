@@ -8,12 +8,12 @@ public:
         fprintf(stderr,"%s\d", info);
     }
 };
-static BTreeNode* construct_internal(
+static cfBTreeNode* construct_internal(
     int* startPreOrder, int* endPreOrder,
     int* startInOrder, int* endInOrder
 ) {
     int rootValue = startPreOrder[0];
-    BTreeNode* root = new BTreeNode(rootValue);
+    cfBTreeNode* root = new cfBTreeNode(rootValue);
     //
     if(startPreOrder == endPreOrder) {
         if(startInOrder == endInOrder && *startPreOrder == *startInOrder){
@@ -41,13 +41,13 @@ static BTreeNode* construct_internal(
     return root;
 }
 
-BTreeNode* construct(int* preorder, int* inorder, int length) {
+cfBTreeNode* construct(int* preorder, int* inorder, int length) {
     if(preorder == nullptr || inorder == nullptr || length <= 0)
         return nullptr;
     return construct_internal(preorder, preorder+length-1,inorder,inorder+length-1);
 }
 
 
-BTreeNode* getNext(BTreeNode* pNode){
+cfBTreeNode* getNext(cfBTreeNode* pNode){
     return nullptr;
 }

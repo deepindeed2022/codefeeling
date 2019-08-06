@@ -31,7 +31,7 @@ template <typename T>
 errcode_t printArr(T *arr, const size_t size)
 {
     if (arr == nullptr || size <= 0)
-        return CC_E_INVALIDARG;
+        return CF_E_INVALIDARG;
 #if CONFIG_DEBUG
     for (size_t i = 0; i < size; ++i)
     {
@@ -39,7 +39,7 @@ errcode_t printArr(T *arr, const size_t size)
     }
     std::cout << std::endl;
 #endif
-    return CC_OK;
+    return CF_OK;
 }
 
 #endif

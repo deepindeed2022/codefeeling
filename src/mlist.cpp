@@ -1,7 +1,7 @@
 #include "mlist.h"
 #include <stack>
 #include <cstdio>
-void print_list(ListNode *phead)
+void print_list(cfListNode *phead)
 {
     fprintf(stderr, "List: ");
     while (phead != NULL)
@@ -11,9 +11,9 @@ void print_list(ListNode *phead)
     }
     fprintf(stderr, "null\n");
 }
-void free_list(ListNode *phead)
+void free_list(cfListNode *phead)
 {
-    ListNode *pN;
+    cfListNode *pN;
     while (phead != NULL)
     {
         pN = phead;
@@ -23,9 +23,9 @@ void free_list(ListNode *phead)
     }
 }
 
-void printReversedList_Iterative(ListNode* phead)
+void printReversedList_Iterative(cfListNode* phead)
 {
-    std::stack<ListNode*> plist;
+    std::stack<cfListNode*> plist;
     while (phead != nullptr) {
         plist.push(phead);
         phead = phead->next;
@@ -37,7 +37,7 @@ void printReversedList_Iterative(ListNode* phead)
     }
 }
 
-void printReversedList_Recursive(ListNode* phead){
+void printReversedList_Recursive(cfListNode* phead){
     if(phead != nullptr) {
         if(phead->next != nullptr) {
             printReversedList_Recursive(phead->next);
