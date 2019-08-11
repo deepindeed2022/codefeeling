@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 # SET(BUILD_USE_64BITS ON)
 
+# reference: https://cmake.org/cmake/help/v3.4/policy/CMP0064.html
 IF(POLICY CMP0064)
     CMAKE_POLICY(SET CMP0064 NEW)
 ENDIF()

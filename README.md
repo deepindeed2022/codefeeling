@@ -1,4 +1,4 @@
-# Introduction To Algorithm
+# INTRODUCTION TO ALGORITHM
 Before there were computers, there were algorithms. But now that there are computers, there are even more algorithms, and algorithms lie at the heart of computing.
 
 ## Chapter 1
@@ -35,7 +35,7 @@ Before there were computers, there were algorithms. But now that there are compu
 - recursion-tree method
 - master method
 
-## How to Run
+## HOW TO RUN
 `mkdir build && cd build`
 `cmake -DTEST=1 .. && make -j4 && make install`
 `./test_practise`
@@ -100,6 +100,6 @@ In file included from /usr/lib/gcc/x86_64-linux-gnu/4.9/include/x86intrin.h:27:0
  #pragma GCC push_options
                          ^
 
-可能是你在函数定义的地方少写了";"
+可能是你在函数定义的地方少写了";"[^1]
 
-http://www.cplusplus.com/forum/general/108022/
+[^1]: http://www.cplusplus.com/forum/general/108022/
