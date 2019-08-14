@@ -5,7 +5,7 @@
 class mException: public std::exception {
 public:
     mException(const char* info) {
-        fprintf(stderr,"%s\d", info);
+        fprintf(stderr,"%s\n", info);
     }
 };
 static cfBTreeNode* construct_internal(

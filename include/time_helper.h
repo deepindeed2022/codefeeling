@@ -15,8 +15,8 @@ int gettimeofday(struct timeval *tp, void *tzp);
 #include <time.h>
 #endif
 
-void time_spendMs(struct timespec* ptime1, struct timespec* ptime2, char* des);
-void time_print(struct timespec* ptime, char* des);
+void time_spendMs(struct timespec* ptime1, struct timespec* ptime2, const char* des);
+void time_print(struct timespec* ptime, const char* des);
 
 
 #define __TIC__()                                \

@@ -46,13 +46,13 @@ int gettimeofday(struct timeval *tp, void *tzp) {
 #endif
 
 
-void time_spendMs(struct timespec* ptime1, struct timespec* ptime2, char* des) {
+void time_spendMs(struct timespec* ptime1, struct timespec* ptime2, const char* des) {
     long spend;
     spend = ((ptime2->tv_sec - ptime1->tv_sec) * 1000 + (ptime2->tv_nsec - ptime1->tv_nsec) / 1000000);
     fprintf(stderr, "[%s]===== TIME SPEND: %ld ms =====\n", des, spend);
 }
 
-void time_print(struct timespec* ptime, char* des) {
+void time_print(struct timespec* ptime, const char* des) {
     fprintf(stderr, "[%s]===== TIME NOW: %ld s, %ld us =====\n", des, (ptime->tv_sec), (ptime->tv_nsec / 1000));
 }
 

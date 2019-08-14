@@ -8,7 +8,7 @@ std::vector<int> get_tmp() {
 TEST(cpp_concept, TmpVectorDoubleCall) {
 	std::vector<int> shape0 = get_tmp();
 	std::vector<int> shape2 = std::vector<int>(shape0.begin(), shape0.end());
-	ASSERT_EQ(shape2.size(), 4);
+	ASSERT_EQ(shape2.size(), 4uL);
 	ASSERT_EQ(shape2[0], 1);
 	ASSERT_EQ(shape2[1], 2);
 	ASSERT_EQ(shape2[2], 3);
