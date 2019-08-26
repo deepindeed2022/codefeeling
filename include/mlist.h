@@ -1,5 +1,5 @@
-#ifndef M_LIST_H_
-#define M_LIST_H_
+#ifndef M_CF_LIST_H_
+#define M_CF_LIST_H_
 typedef struct cfListNode {
     int value;
     cfListNode* next;
@@ -8,6 +8,8 @@ typedef struct cfListNode {
         next = nullptr;
     }
 } cfListNode;
+
+void reverse_list(cfListNode* head);
 
 void print_list(cfListNode *phead);
 void free_list(cfListNode *phead);

@@ -4,6 +4,7 @@
 #include <cassert>
 
 #define TEST_MAX_VALUE 10000
+
 inline cfListNode* generate_random_list(cfListNode** phead, int size){
     assert(*phead == NULL && size > 0);
     cfListNode** p = phead;
@@ -29,4 +30,12 @@ TEST(List, reversedPrint)
     printReversedList_Recursive(phead);
     fprintf(stderr,"\n");
     free_list(phead);
+}
+
+TEST(List, reverse_list) {
+    cfListNode* phead = NULL;
+    phead = generate_random_list(&phead, 10);
+    print_list(phead);
+    reverse_list(phead);
+    print_list(phead);
 }
