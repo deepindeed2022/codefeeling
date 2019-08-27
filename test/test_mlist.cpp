@@ -34,8 +34,29 @@ TEST(List, reversedPrint)
 
 TEST(List, reverse_list) {
     cfListNode* phead = NULL;
-    phead = generate_random_list(&phead, 10);
-    print_list(phead);
+    std::vector<int> test_data = {1,2,3,4,5,6,7,8,9};
+    init_list(test_data, &phead);
     phead = reverse_list(phead);
-    print_list(phead);
+    // print_list(phead);
+    std::vector<int> result = resave_list(phead);
+    const int size = test_data.size();
+    for(int i =0; i < size; i++) {
+        ASSERT_EQ(test_data[size - 1 - i],  result[i]);
+    }
+}
+TEST(List, reverse_between) {
+    cfListNode* phead = NULL;
+    std::vector<int> test_data = {1,2,3,4,5,6,7,8,9};
+    init_list(test_data, &phead);
+    int m = 4, n = 8;
+    phead = reverseBetween(phead, m, n);
+    std::vector<int> result = resave_list(phead);
+    const int size = test_data.size();
+    for(int i = 0; i < size; i++) {
+        if(i < n && i >= m - 1) {
+            ASSERT_EQ(test_data[n-m+1-(i-m) + 1],  result[i]);
+        } else {
+            ASSERT_EQ(test_data[i],  result[i]);
+        }
+    }
 }

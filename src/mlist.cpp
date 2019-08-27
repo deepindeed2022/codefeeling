@@ -31,6 +31,25 @@ cfListNode* reverse_list(cfListNode* head) {
     return prev;
 }
 
+cfListNode *reverseBetween(cfListNode *head, int m, int n) {
+    cfListNode dummy(-1);
+    dummy.next = head;
+    cfListNode* prev = &dummy;
+    for(int i = 0; i < m - 1; i++) {
+        prev = prev->next;
+    }
+    cfListNode* const head2 = prev;
+    prev = head2->next;
+    cfListNode* cur = prev->next;
+    for(int i = m; i < n; i++) {
+        prev->next = cur->next;
+        cur->next = head2->next;
+        head2->next = cur;
+        cur = prev->next;
+    }
+    return dummy.next;
+}
+
 void print_list(cfListNode *phead)
 {
     fprintf(stderr, "List: ");
@@ -74,4 +93,24 @@ void printReversedList_Recursive(cfListNode* phead){
         }
         fprintf(stderr, "%d<-", phead->value);
     }
+}
+
+cfListNode* init_list(std::vector<int>& data, cfListNode** phead) {
+    cfListNode dummy(-1); //注意: 一定是创建cfListNode之后再赋值,否则会丢失内存
+    cfListNode* pp = &dummy;
+    for(int i = 0; i < data.size(); i++) {
+        pp->next = new cfListNode(data[i]);
+        pp = pp->next;
+    }
+    *phead = dummy.next;
+    return dummy.next;
+}
+
+std::vector<int> resave_list(cfListNode* phead) {
+    std::vector<int> result;
+    while(phead != nullptr) {
+        result.push_back(phead->value);
+        phead = phead->next;
+    }
+    return result;
 }
