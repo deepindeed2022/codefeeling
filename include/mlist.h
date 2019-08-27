@@ -9,7 +9,7 @@ typedef struct cfListNode {
     }
 } cfListNode;
 
-void reverse_list(cfListNode* head);
+cfListNode* reverse_list(cfListNode* head);
 
 void print_list(cfListNode *phead);
 void free_list(cfListNode *phead);

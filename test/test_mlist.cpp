@@ -36,6 +36,6 @@ TEST(List, reverse_list) {
     cfListNode* phead = NULL;
     phead = generate_random_list(&phead, 10);
     print_list(phead);
-    reverse_list(phead);
+    phead = reverse_list(phead);
     print_list(phead);
 }

@@ -1,8 +1,8 @@
 #include "mlist.h"
 #include <stack>
 #include <cstdio>
-void reverse_list(cfListNode* head) {
-    if(head == nullptr || head->next == nullptr) return;
+cfListNode* reverse_list_v0(cfListNode* head) {
+    if(head == nullptr || head->next == nullptr) return head;
     cfListNode* prev = nullptr;
     cfListNode* cur = head;
     while(cur->next != nullptr) {
@@ -12,8 +12,25 @@ void reverse_list(cfListNode* head) {
         cur = next;
         next = next->next;
     }
-    head = cur;
+    cur->next = prev;
+    return cur;
 }
+cfListNode* reverse_list(cfListNode* head) {
+    if(head == nullptr || head->next == nullptr) return head;
+    cfListNode* prev = head;
+    cfListNode* cur = head->next;
+    cfListNode* next;
+    prev->next = nullptr;
+
+    while(cur != nullptr) {
+        next = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+    }
+    return prev;
+}
+
 void print_list(cfListNode *phead)
 {
     fprintf(stderr, "List: ");
