@@ -23,6 +23,7 @@ typedef struct BBox {
 	float score;
 } BBox;
 
+// nms
 std::vector<BBox> nonMaximumSuppression(std::vector<BBox>& bbox, float overlapThreshold) {
 	const int bbox_size = bbox.size();
 	std::sort(bbox.begin(), bbox.end(), [](BBox& a, BBox& b) {return a.score > b.score;});
@@ -52,4 +53,8 @@ std::vector<BBox> nonMaximumSuppression(std::vector<BBox>& bbox, float overlapTh
 	}
 	return res;
 }
+
+// roialign
+// roipooling
+
 #endif
