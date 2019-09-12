@@ -3,14 +3,6 @@
 #include <cf_util.h>
 #include <vector>
 #include <algorithm>
-typedef struct cf_point_t {
-	int x;
-	int y;
-} cf_point_t;
-
-static cf_rect_t combine_box(cf_point_t& lt, cf_point_t& rb) {
-	return cf_rect_t{lt.x, lt.y, rb.x, rb.y};
-}
 static int InterSectionArea(cf_rect_t& aa, cf_rect_t& bb) {
 	int l = std::max(aa.left, bb.left);
 	int t = std::max(aa.top, bb.top);

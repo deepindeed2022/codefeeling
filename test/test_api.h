@@ -23,7 +23,7 @@ inline std::string test_path(const std::string& name) {
     _fullpath(acCanonicalPath, "./", PATH_MAX);
     return std::string(acCanonicalPath) + name;
 #else
-    realpath("./", acCanonicalPath);
+    realpath("../test/data", acCanonicalPath);
     return std::string(acCanonicalPath) +"/" +name;
 #endif
 }

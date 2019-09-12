@@ -5,7 +5,7 @@
 
 TEST(Graph, CreateAndOutput)
 {
-	std::string graph_path = test_path("../test/graph/algraph.txt");
+	std::string graph_path = test_path("graph/algraph.txt");
 	ALGraph<char> g(graph_path);
 	g.print_Graph(std::cout);
 	// std::vector<char> result = g.get_arcNodes(2);
@@ -17,11 +17,11 @@ TEST(Graph, CreateAndOutput)
 
 
 TEST(Polygon, Area) {
-	Polygon<int> g(test_path("../test/graph/polygon_area_5.txt"));
+	Polygon<int> g(test_path("graph/polygon_area_5.txt"));
 	std::cout << g.Area() << std::endl;
 	ASSERT_FLOAT_EQ(10250, g.Area());
 
-	Polygon<int> g2(test_path("../test/graph/polygon_area.txt"));
+	Polygon<int> g2(test_path("graph/polygon_area.txt"));
 	std::cout << g2.Area() << std::endl;
 	ASSERT_FLOAT_EQ(198, g2.Area());
 }

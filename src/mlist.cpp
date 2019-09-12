@@ -98,7 +98,7 @@ void printReversedList_Recursive(cfListNode* phead){
 cfListNode* init_list(std::vector<int>& data, cfListNode** phead) {
     cfListNode dummy(-1); //注意: 一定是创建cfListNode之后再赋值,否则会丢失内存
     cfListNode* pp = &dummy;
-    for(int i = 0; i < data.size(); i++) {
+    for(uint32_t i = 0; i < data.size(); i++) {
         pp->next = new cfListNode(data[i]);
         pp = pp->next;
     }

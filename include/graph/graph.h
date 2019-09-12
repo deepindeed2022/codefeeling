@@ -61,6 +61,9 @@ public:
 			std::cerr << "fail to open the file " << infile << std::endl;
 		} else {
 			bool result = this->create_(fin);
+			if(!result) {
+				std::cerr << "fail to open the file " << infile << std::endl;
+			}
 		}
 	}
 	std::vector<T> get_arcNodes(const uint32_t i) {
