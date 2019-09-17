@@ -4,7 +4,7 @@
 TEST(Chapter3, maximum_subarray)
 {
 	int aa[] = {-2,1,-3,4,-1,2,1,-5,4,1};
-	printArr(aa, 10);
+	test::printArr(aa, 10);
 	int start = 0;
 	int end = 0;
 	__TIC__();

@@ -2,7 +2,8 @@
 #include <vector>
 #include <iostream>
 std::vector<int> get_tmp() {
-	return {1, 2, 3, 4};
+	std::vector<int> tmp = {1, 2, 3, 4};
+	return tmp;
 }
 
 TEST(cpp_concept, TmpVectorDoubleCall) {
@@ -16,6 +17,9 @@ TEST(cpp_concept, TmpVectorDoubleCall) {
 
 #if !(defined(_WIN32) || defined(__linux__))
 	// 由于返回的是临时变量，因此如下初始化中的begin和end对应并不是同一个vec， 这个在vs 2015中会抛出异常
+	// ubuntu16 g++-4.9会抛出异常
+	// unknown file: Failure
+	// C++ exception with description "std::bad_alloc" thrown in the test body.
 	std::vector<int> shape1 = std::vector<int>(get_tmp().begin(), get_tmp().end());
 	ASSERT_NE(shape1.size(), 4);
 #endif

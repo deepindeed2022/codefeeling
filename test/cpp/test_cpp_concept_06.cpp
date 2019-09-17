@@ -8,7 +8,9 @@ private:
 public:
 	A(): n2(0), n1(n2 + 2) {}
 	void Print(){
+#ifdef CONFIG_DEBUG
 	    std::cout << "n1: " << n1 << ", n2: " << n2 << std::endl;
+#endif
 	}
 	int get_n1() { return n1; }
 	int get_n2() { return n2; }

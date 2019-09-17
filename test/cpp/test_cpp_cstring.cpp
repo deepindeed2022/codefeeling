@@ -1,12 +1,12 @@
 ﻿#include <cstring>
 #include <cstdio>
 #include <gtest/gtest.h>
-char* GetString1()
+char* getString1()
 {
     char p[] = "Hello World";
     return p;
 }
-char* GetString2()
+char* getString2()
 {
     char *p = "Hello World";
     return p;
@@ -14,8 +14,9 @@ char* GetString2()
 
 TEST(cpp_concept, ret_temp_char_arr)
 {
-    printf("GetString1 returns: %s. \n", GetString1());
-    printf("GetString2 returns: %s. \n", GetString2());
+    fprintf(stderr, "getString1 returns: %s. \n", getString1());
+    // printf(stderr, "getString2 returns: %s. \n", getString2());
+    ASSERT_EQ(getString2(), "Hello World");
 }
 /***************************************************************************
 答案：输出两行，第一行GetString1 returns: 后面跟的是一串随机的内容，而第二行GetString2 returns: Hello World. 

@@ -2,7 +2,7 @@
 #include "test_api.h"
 #include "time_helper.h"
 
-TEST(COMMON, clock_gettime) {
+TEST(COMMON, CLOCK_GETTIME) {
     long spend;
     struct timespec start, end;
 

@@ -1,16 +1,16 @@
-#include <dl/tensor.h>
+#include <dl/datablob.h>
 #include <cf_macro.h>
 #include <iomanip>
 
 namespace dl {
 template <typename T>
-Tensor<T>::Tensor():
+DataBlob<T>::DataBlob():
     m_height(0), m_width(0), m_channel(0), m_step(-1),
     m_data(0), m_offset(0)
 {
 }
 template <typename T>
-Tensor<T>::Tensor(size_t height, size_t width, size_t channels, size_t step):
+DataBlob<T>::DataBlob(size_t height, size_t width, size_t channels, size_t step):
     m_height(height), m_width(width), m_channel(channels), m_step(step),
     m_data(new T[height * step], [](T *d) { delete[] d; }), m_offset(0)
 {
@@ -20,12 +20,12 @@ Tensor<T>::Tensor(size_t height, size_t width, size_t channels, size_t step):
 }
 
 template <typename T>
-Tensor<T>::Tensor(size_t height, size_t width, size_t channels):
-    Tensor(height, width, channels, width * channels)
+DataBlob<T>::DataBlob(size_t height, size_t width, size_t channels):
+    DataBlob(height, width, channels, width * channels)
 {}
 
 template <typename T>
-Tensor<T>::Tensor(size_t height, size_t width, size_t channels, T *data):
+DataBlob<T>::DataBlob(size_t height, size_t width, size_t channels, T *data):
     m_height(height), m_width(width), m_channel(channels),
     m_step(width * channels),
     m_data(data, [](T *) {}), m_offset(0)
@@ -33,7 +33,7 @@ Tensor<T>::Tensor(size_t height, size_t width, size_t channels, T *data):
 }
 
 template <typename T>
-Tensor<T>::Tensor(size_t height, size_t width, size_t channels, size_t step, T *data):
+DataBlob<T>::DataBlob(size_t height, size_t width, size_t channels, size_t step, T *data):
     m_height(height), m_width(width), m_channel(channels),
     m_step(step),
     m_data(data, [](T *) {}), m_offset(0)
@@ -41,7 +41,7 @@ Tensor<T>::Tensor(size_t height, size_t width, size_t channels, size_t step, T *
 }
 
 template <typename T>
-Tensor<T>::Tensor(const Tensor<T> &rhs):
+DataBlob<T>::DataBlob(const DataBlob<T> &rhs):
     m_height(rhs.m_height), m_width(rhs.m_width), m_channel(rhs.m_channel),
     m_step(rhs.m_step),
     m_data(rhs.m_data), m_offset(0)
@@ -49,7 +49,7 @@ Tensor<T>::Tensor(const Tensor<T> &rhs):
 }
 
 template <typename T>
-Tensor<T>::Tensor(const Tensor<T> &rhs,
+DataBlob<T>::DataBlob(const DataBlob<T> &rhs,
         size_t row_offset, size_t row_count,
         size_t col_offset, size_t col_count):
     m_height(row_count), m_width(col_count), m_channel(rhs.m_channel),
@@ -59,7 +59,7 @@ Tensor<T>::Tensor(const Tensor<T> &rhs,
 }
 
 template <typename T>
-Tensor<T> &Tensor<T>::operator=(const Tensor<T> &rhs)
+DataBlob<T> &DataBlob<T>::operator=(const DataBlob<T> &rhs)
 {
     this->m_height = rhs.m_height;
     this->m_width = rhs.m_width;
@@ -71,23 +71,23 @@ Tensor<T> &Tensor<T>::operator=(const Tensor<T> &rhs)
 }
 
 template <typename T>
-T &Tensor<T>::at(size_t r, size_t c, size_t ch)
+T &DataBlob<T>::at(size_t r, size_t c, size_t ch)
 {
     CF_ASSERT(r < m_height && c < m_width && ch < m_channel);
     return ptr(r)[c*m_channel + ch];
 }
 
 template <typename T>
-const T &Tensor<T>::at(size_t r, size_t c, size_t ch) const
+const T &DataBlob<T>::at(size_t r, size_t c, size_t ch) const
 {
     CF_ASSERT(r < m_height && c < m_width && ch < m_channel);
     return ptr(r)[c*m_channel + ch];
 }
 
 template <typename T>
-Tensor<T> Tensor<T>::clone() const
+DataBlob<T> DataBlob<T>::clone() const
 {
-    Tensor<T> res(m_height, m_width, m_channel);
+    DataBlob<T> res(m_height, m_width, m_channel);
     for (size_t r = 0; r < m_height; ++r) {
         memcpy(res.ptr(r), this->ptr(r), sizeof(T) * m_width * m_channel);
     }
@@ -95,7 +95,7 @@ Tensor<T> Tensor<T>::clone() const
 }
 
 template <typename T>
-bool Tensor<T>::equals(const Tensor<T> &rhs) const
+bool DataBlob<T>::equals(const DataBlob<T> &rhs) const
 {
     if (this->m_height != rhs.m_height) return false;
     if (this->m_width != rhs.m_width) return false;
@@ -108,25 +108,25 @@ bool Tensor<T>::equals(const Tensor<T> &rhs) const
 }
 
 template <typename T>
-bool Tensor<T>::is_continuous() const
+bool DataBlob<T>::is_continuous() const
 { return m_step == m_width * m_channel; }
 
 template <typename T>
-void Tensor<T>::read(const T *src)
+void DataBlob<T>::read(const T *src)
 {
     CF_ASSERT(is_continuous());
     memcpy(m_data.get(), src, sizeof(T) * this->total_nr_elem());
 }
 
 template <typename T>
-void Tensor<T>::write(T *dst) const
+void DataBlob<T>::write(T *dst) const
 {
     CF_ASSERT(is_continuous());
     memcpy(dst, m_data.get(), sizeof(T) * this->total_nr_elem());
 }
 
 template <typename T>
-std::ostream &operator<<(std::ostream &os, const Tensor<T> &m)
+std::ostream &operator<<(std::ostream &os, const DataBlob<T> &m)
 {
     for (size_t r = 0; r < m.height(); ++r) {
         for (size_t c = 0; c < m.width(); ++c) {
@@ -144,9 +144,9 @@ std::ostream &operator<<(std::ostream &os, const Tensor<T> &m)
     return os;
 }
 
-template class Tensor<uchar>;
-template class Tensor<float>;
-template std::ostream &operator<<(std::ostream &os, const Tensor<uchar> &m);
-template std::ostream &operator<<(std::ostream &os, const Tensor<float> &m);
+template class DataBlob<uchar>;
+template class DataBlob<float>;
+template std::ostream &operator<<(std::ostream &os, const DataBlob<uchar> &m);
+template std::ostream &operator<<(std::ostream &os, const DataBlob<float> &m);
 
 }

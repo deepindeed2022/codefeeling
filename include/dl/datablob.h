@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_DL_TENSOR_H_
-#define _INCLUDE_DL_TENSOR_H_
+#ifndef _INCLUDE_DL_DataBlob_H_
+#define _INCLUDE_DL_DataBlob_H_
 #include <utility>
 #include <memory>
 #include <iostream>
@@ -25,14 +25,14 @@ private:
 	size_t m_height, m_width;
 };
 
-class TensorShape: public Size {
+class DataBlobShape: public Size {
 public:
-	TensorShape(size_t heights, size_t widths, size_t channels):
+	DataBlobShape(size_t heights, size_t widths, size_t channels):
 		Size(heights, widths), m_channel(channels) { }
-	TensorShape(size_t heights, size_t widths, size_t channels, size_t nums):
+	DataBlobShape(size_t heights, size_t widths, size_t channels, size_t nums):
 		Size(heights, widths), m_channel(channels) { }
 	size_t channels() const { return m_channel; }
-	bool operator == (const TensorShape &rhs) const {
+	bool operator == (const DataBlobShape &rhs) const {
 		return Size::operator==(rhs) && channels() == rhs.channels();
 	}
 private:
@@ -40,7 +40,7 @@ private:
 };
 
 template <typename T>
-class Tensor {
+class DataBlob {
 private:
 	size_t m_height, m_width;
 	size_t m_channel;
@@ -50,22 +50,22 @@ private:
 	T *raw_ptr() { return m_data.get() + m_offset; }
 	const T *raw_ptr() const { return m_data.get() + m_offset; }
 public:
-	Tensor();
-	Tensor(size_t height, size_t width, size_t channel, size_t step);
-	Tensor(size_t height, size_t width, size_t channel);
+	DataBlob();
+	DataBlob(size_t height, size_t width, size_t channel, size_t step);
+	DataBlob(size_t height, size_t width, size_t channel);
 	// do not try to manage data by shared_ptr
-	Tensor(size_t height, size_t width, size_t channel, T *data);
-	Tensor(size_t height, size_t width, size_t channel, size_t step, T *data);
+	DataBlob(size_t height, size_t width, size_t channel, T *data);
+	DataBlob(size_t height, size_t width, size_t channel, size_t step, T *data);
 	// shallow-copy constructor
-	Tensor(const Tensor<T> &rhs);
-	Tensor(const Tensor<T> &rhs, size_t row_offset, size_t row_count,
+	DataBlob(const DataBlob<T> &rhs);
+	DataBlob(const DataBlob<T> &rhs, size_t row_offset, size_t row_count,
 			size_t col_offset, size_t col_count);
-	Tensor<T> &operator=(const Tensor<T> &rhs);
+	DataBlob<T> &operator=(const DataBlob<T> &rhs);
 
 	T &at(size_t r, size_t c, size_t ch);
 	const T &at(size_t r, size_t c, size_t ch) const;
 
-	Tensor<T> clone() const;
+	DataBlob<T> clone() const;
 
 	// read data from src
 	void read(const T *src);
@@ -84,20 +84,20 @@ public:
 	size_t step() const { return m_step; }
 	size_t total_nr_elem() const {return height() * width() * channels();}
 	size_t total_span_elem() const { return height() * step(); }
-	bool equals(const Tensor<T> &rhs) const;
+	bool equals(const DataBlob<T> &rhs) const;
 	bool is_continuous() const;
 	Size size() const { return {height(), width()}; }
-	TensorShape shape() const { return {height(), width(), channels()}; }
+	DataBlobShape shape() const { return {height(), width(), channels()}; }
 };
 
 template <typename T>
-std::ostream &operator<<(std::ostream &os, const Tensor<T> &m);
+std::ostream &operator<<(std::ostream &os, const DataBlob<T> &m);
 
 // type aliases
 using uchar = unsigned char;
 using ushort = unsigned short;
-using Tensor8u = Tensor<uchar>;
-using Tensor32f = Tensor<float>;
+using DataBlob8u = DataBlob<uchar>;
+using DataBlob32f = DataBlob<float>;
 }
 
 #endif

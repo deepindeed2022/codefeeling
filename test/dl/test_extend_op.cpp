@@ -1,6 +1,6 @@
 #include <dl/extend_op.h>
 #include <gtest/gtest.h>
-#include "../test_api.h"
+#include "test_api.h"
 
 TEST(DLExtendOp, NMS) {
     BBox a = {{1, 1, 9, 9}, 0.9};

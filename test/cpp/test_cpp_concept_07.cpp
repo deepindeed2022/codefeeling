@@ -17,7 +17,9 @@ public:
 	}
 #endif
 	void Print() {
+#ifdef CONFIG_DEBUG
 		std::cout << value << std::endl;
+#endif
 	}
 private:
 	int value;

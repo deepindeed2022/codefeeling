@@ -7,6 +7,7 @@
 
 int preorders[100];
 int idx = 0;
+namespace test {
 void print_preorder_btree(cfBTreeNode *root) {
 	if (root) {
 		fprintf(stderr, "node:%d->", root->value);
@@ -15,6 +16,7 @@ void print_preorder_btree(cfBTreeNode *root) {
 		print_preorder_btree(root->right);
 		fprintf(stderr, "\n");
 	}
+}
 }
 TEST(BTree, construct) {
 	/*****************************
@@ -30,6 +32,6 @@ TEST(BTree, construct) {
 	const int length = 6;
 	cfBTreeNode* root = construct(preorder, inorder, 6);
 	idx = 0;
-	print_preorder_btree(root);
+	test::print_preorder_btree(root);
 	ASSERT_EQ(0, memcmp(preorder, preorders, length * sizeof(int)));
 }

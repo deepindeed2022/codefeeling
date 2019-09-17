@@ -7,17 +7,17 @@ TEST(cpp_concept, chararr_and_string_compare)
 
     const char *str3 = "hello world";
     const char *str4 = "hello world";
+    ASSERT_NE(str1, str2);
+    ASSERT_EQ(str3, str4);
+    // if (str1 == str2)
+    //     fprintf(stderr, "str1(%p) and str2(%p) are same.\n", str1, str2);
+    // else
+    //     fprintf(stderr, "str1(%p) and str2(%p) are not same.\n", str1, str2);
 
-    if (str1 == str2)
-        printf("str1(%p) and str2(%p) are same.\n", str1, str2);
-    else
-        printf("str1(%p) and str2(%p) are not same.\n", str1, str2);
-
-    if (str3 == str4)
-        printf("str3(%p) and str4(%p) are same.\n", str3, str4);
-    else
-        printf("str3(%p) and str4(%p) are not same.\n", str3, str4);
-
+    // if (str3 == str4)
+    //     fprintf(stderr, "str3(%p) and str4(%p) are same.\n", str3, str4);
+    // else
+    //     fprintf(stderr, "str3(%p) and str4(%p) are not same.\n", str3, str4);
 }
 //
 // 答案：输出两行。第一行是str1 and str2 are not same，第二行是str3 and str4 are same。

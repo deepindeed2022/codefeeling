@@ -8,10 +8,10 @@
 inline cfListNode* generate_random_list(cfListNode** phead, int size){
     assert(*phead == NULL && size > 0);
     cfListNode** p = phead;
-    (*p) = new cfListNode(get_int_rand() % TEST_MAX_VALUE);
+    (*p) = new cfListNode(test::get_int_rand() % TEST_MAX_VALUE);
     cfListNode* pp = *p; //注意: 一定是创建cfListNode之后再赋值,否则会丢失内存
     for(int i = 1; i < size; i++) {
-        (*p)->next = new cfListNode(get_int_rand() % TEST_MAX_VALUE);
+        (*p)->next = new cfListNode(test::get_int_rand() % TEST_MAX_VALUE);
         *p = (*p)->next;
     }
     return pp;

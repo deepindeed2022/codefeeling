@@ -1,15 +1,13 @@
 #include <dl/op.h>
 #include <gtest/gtest.h>
-#include "../test_api.h"
+#include "test_api.h"
 
 TEST(DLOp, SoftMax) {
     std::vector<float> input = {1, 1, 2};
     dl::op::SoftMax(input);
     ASSERT_EQ(2, dl::op::ArgMax(input));
-    for(auto i: input){
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;
+    ASSERT_FLOAT_EQ(input[0], input[1]);
+    ASSERT_GE(input[2], input[1]);
 }
 
 TEST(DLOp, GetConvolutionOutputSize) {

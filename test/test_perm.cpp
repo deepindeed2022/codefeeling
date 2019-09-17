@@ -40,5 +40,4 @@ TEST(Perm, printall)
     std::string s("abc");
     Combination(s.c_str());
     ASSERT_EQ(7, count);
-    // fprintf(stderr, "total size:%d\n", count);
 }
