@@ -7,9 +7,7 @@ template <typename T>
 void fill_uniform_int(dl::DataBlob<T> &mat)
 {
     std::mt19937 engine;
-    std::uniform_int_distribution<T> dist(
-            std::numeric_limits<T>::min(),
-            std::numeric_limits<T>::max());
+    std::uniform_int_distribution<T> dist(std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
     for (size_t r = 0; r < mat.height(); ++r) {
         for (size_t c = 0; c < mat.width(); ++c) {
             for (size_t ch = 0; ch < mat.channels(); ++ch) {
@@ -46,8 +44,8 @@ TEST(DL, DataBlob)
     auto D = get_matrix(p);
     ASSERT_EQ(p, &D.at(0, 0, 0));
     {
-        dl::DataBlob<dl::uchar> A(3, 4, 1);
-        for (int i = 0; i < 12; ++i) A.ptr()[i] = i;
+        dl::DataBlob<dl::uchar> A(3, 4, 3);
+        for (int i = 0; i < 36; ++i) A.ptr()[i] = i;
         dl::DataBlob<dl::uchar> B(A, 0, 2, 1, 2);
         std::cout << A << std::endl;
         std::cout << B << std::endl;

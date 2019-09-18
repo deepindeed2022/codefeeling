@@ -18,10 +18,10 @@ TEST(Graph, CreateAndOutput)
 
 TEST(Polygon, Area) {
 	Polygon<int> g(test::test_path("graph/polygon_area_5.txt"));
-	std::cout << g.Area() << std::endl;
+	// std::cout << g.Area() << std::endl;
 	ASSERT_FLOAT_EQ(10250, g.Area());
 
 	Polygon<int> g2(test::test_path("graph/polygon_area.txt"));
-	std::cout << g2.Area() << std::endl;
+	// std::cout << g2.Area() << std::endl;
 	ASSERT_FLOAT_EQ(198, g2.Area());
 }

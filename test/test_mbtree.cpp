@@ -14,7 +14,6 @@ void print_preorder_btree(cfBTreeNode *root) {
 		preorders[idx++] = root->value;
 		print_preorder_btree(root->left);
 		print_preorder_btree(root->right);
-		fprintf(stderr, "\n");
 	}
 }
 }
@@ -33,5 +32,6 @@ TEST(BTree, construct) {
 	cfBTreeNode* root = construct(preorder, inorder, 6);
 	idx = 0;
 	test::print_preorder_btree(root);
+	std::cout << std::endl;
 	ASSERT_EQ(0, memcmp(preorder, preorders, length * sizeof(int)));
 }

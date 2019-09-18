@@ -4,7 +4,9 @@
 TEST(Chapter1, InsertSort)
 {
     int aa[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    __TIC__();
     ASSERT_EQ(CF_OK, insert_sort(aa, 10));
+    __TOC__();
     int expect_aa[] = {1,2,3,4,5,6,7,8,9,10};
     for(int i = 0; i < 10; i++) ASSERT_EQ(expect_aa[i], aa[i]);
     ASSERT_EQ(CF_E_INVALIDARG, insert_sort(nullptr, 0));
