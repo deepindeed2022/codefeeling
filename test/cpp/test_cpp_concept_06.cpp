@@ -19,10 +19,11 @@ TEST(cpp_concept, init_class_param)
 {
 	A a;
 	// a.Print();
-	ASSERT_NE(2, a.get_n1());
 #ifndef _WIN32
+	ASSERT_EQ(2, a.get_n1());
 	ASSERT_EQ(0, a.get_n2());
 #else
+	ASSERT_NE(2, a.get_n1());
 	ASSERT_NE(0, a.get_n2());
 #endif
 }

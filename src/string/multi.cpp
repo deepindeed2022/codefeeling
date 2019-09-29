@@ -21,3 +21,32 @@ std::string string_multi_op(std::string& num1, std::string& num2){
 	}
 	return "0";
 }
+
+// split: receives a char delimiter; returns a vector of strings
+// By default ignores repeated delimiters, unless argument rep == 1.
+std::vector<std::string> split(std::string work, char delim, int rep) {
+	std::vector<std::string> flds;
+    std::string buf = "";
+    int i = 0;
+    while (i < work.length()) {
+        if (work[i] != delim)
+            buf += work[i];
+        else if (rep == 1) {
+            flds.push_back(buf);
+            buf = "";
+        } else if (buf.length() > 0) {
+            flds.push_back(buf);
+            buf = "";
+        }
+        i++;
+    }
+    if (!buf.empty())
+        flds.push_back(buf);
+    return flds;
+}
+
+std::string strToUpper(std::string& s) {
+	std::string ret = s;
+	for(int i = 0; i < ret.size(); i++) ret[i] = std::toupper(ret[i]);
+	return ret;
+}
