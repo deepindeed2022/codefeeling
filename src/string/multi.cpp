@@ -12,7 +12,7 @@ std::string string_multi_op(std::string& num1, std::string& num2){
 			int sum = res[i+j+1] - '0' + step_carry + (mul % 10);
 			res[i+j+1] = (sum % 10) + '0';
 			step_carry = sum / 10 + mul / 10;
-			std::cout <<(mul % 10)<<"  "<<(sum % 10)<<" ->"<< step_carry << std::endl;
+			// std::cout <<(mul % 10)<<"  "<<(sum % 10)<<" ->"<< step_carry << std::endl;
 		}
 		res[i] += step_carry;
 	}
