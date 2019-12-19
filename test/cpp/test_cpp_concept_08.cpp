@@ -11,7 +11,7 @@ TEST(cpp_concept, sizeof_values)
     char pString2[100] = "google";
     int size3 = sizeof(pString2);
     int size4 = SizeOf(pString2);
-#if defined(_WIN32) || defined(__x86__)
+#if defined(__x86__)
 	ASSERT_EQ(4, size1);
 	ASSERT_EQ(1, size2);
 	ASSERT_EQ(100, size3);

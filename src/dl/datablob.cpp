@@ -1,6 +1,7 @@
 #include <dl/datablob.h>
 #include <cf_macro.h>
 #include <iomanip>
+#include <string>
 
 namespace dl {
 template <typename T>

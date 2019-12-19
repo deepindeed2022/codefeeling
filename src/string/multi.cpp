@@ -2,8 +2,8 @@
 #include <iostream>
 std::string string_multi_op(std::string& num1, std::string& num2){
 	if (num1 == "0" || num2 == "0") return "0";
-	int l1 = num1.length();
-	int l2 = num2.length();
+	size_t l1 = num1.length();
+	size_t l2 = num2.length();
 	std::string res(l1 + l2, '0');
 	for (int i = l1 - 1; i >= 0; i--) {
 		int step_carry = 0;

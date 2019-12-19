@@ -39,8 +39,8 @@ TEST(List, reverse_list) {
     phead = reverse_list(phead);
     // print_list(phead);
     std::vector<int> result = resave_list(phead);
-    const int size = test_data.size();
-    for(int i =0; i < size; i++) {
+    const size_t size = test_data.size();
+    for(size_t i = 0; i < size; i++) {
         ASSERT_EQ(test_data[size - 1 - i],  result[i]);
     }
 }

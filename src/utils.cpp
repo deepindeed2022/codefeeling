@@ -2,6 +2,7 @@
 #include <cassert>
 #include <cstdlib>
 #include <cstdint>
+#include <algorithm>
 #include <cf_util.h>
 
 using namespace std;
@@ -39,10 +40,10 @@ void* fastAlloc(size_t size) {
 }
 
 float IoU(const cf_rect_t& A, const cf_rect_t& B) {
-	float xx1 = std::max(A.left, B.left);
-	float yy1 = std::max(A.top, B.top);
-	float xx2 = std::min(A.right, B.right);
-	float yy2 = std::min(A.bottom, B.bottom);
+	float xx1 = static_cast<float>(std::max(A.left, B.left));
+	float yy1 = static_cast<float>(std::max(A.top, B.top));
+	float xx2 = static_cast<float>(std::min(A.right, B.right));
+	float yy2 = static_cast<float>(std::min(A.bottom, B.bottom));
 
 	float inter  = std::max(0.0f, xx2 - xx1) * std::max(0.0f, yy2 - yy1);
 	float a_area = std::abs(A.right - A.left) * std::abs(A.bottom - A.top);

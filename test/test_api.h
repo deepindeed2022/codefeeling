@@ -22,14 +22,14 @@ inline std::string test_path(const std::string& name) {
     char acCanonicalPath[PATH_MAX];
     memset(acCanonicalPath, 0, PATH_MAX);
 #ifdef _WIN32
-    _fullpath(acCanonicalPath, "./", PATH_MAX);
+    _fullpath(acCanonicalPath, "../test/data/", PATH_MAX);
     return std::string(acCanonicalPath) + name;
 #else
     realpath("../test/data", acCanonicalPath);
     return std::string(acCanonicalPath) +"/" +name;
 #endif
 }
-template <typename T>
+template <class T>
 errcode_t printArr(T *arr, const size_t size)
 {
     if (arr == nullptr || size <= 0)

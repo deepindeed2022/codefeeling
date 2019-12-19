@@ -1,18 +1,20 @@
-#include <dl/datablob.h>
 #include <gtest/gtest.h>
+#include <dl/datablob.h>
 #include <test_api.h>
+#include <limits> // numeric_limits
+#include <random>  // uniform_int_distribution
 
 namespace test {
-template <typename T>
+template <class T>
 void fill_uniform_int(dl::DataBlob<T> &mat)
 {
     std::mt19937 engine;
-    std::uniform_int_distribution<T> dist(std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
+    std::uniform_int_distribution<int> dist(0, 100);
     for (size_t r = 0; r < mat.height(); ++r) {
         for (size_t c = 0; c < mat.width(); ++c) {
             for (size_t ch = 0; ch < mat.channels(); ++ch) {
                 T &target = mat.at(r, c, ch);
-                target = dist(engine);
+                target = static_cast<T>(dist(engine));
             }
         }
     }

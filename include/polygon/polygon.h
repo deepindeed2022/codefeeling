@@ -1,23 +1,27 @@
-#ifndef INCLUDE_POLYGON_H_
-#define INCLUDE_POLYGON_H_
-template <typename scalar_t>
-class Polygon {
+#ifndef INCLUDE_CF_POLYGON_H_
+#define INCLUDE_CF_POLYGON_H_
+#include <string>
+#include <cctype>
+#include <vector>
+
+template <class scalar_t>
+class CF_Polygon {
 public:
 	typedef struct polygon_point_t {
 		scalar_t x;
 		scalar_t y;
 	} polygon_point_t;
-	Polygon(int n): v_num(n) {
+	CF_Polygon(int n): v_num(n) {
 		points.resize(v_num);
 	}
-	Polygon(const std::string& infile) {
+	CF_Polygon(const std::string& infile) {
 		std::ifstream fin(infile);
 		if(!fin) {
 			std::cerr << "fail to open the file " << infile << std::endl;
 		} else {
 			bool result = this->create_(fin);
 			if(!result) {
-				std::cerr << "create Polygon from " << infile << " failed\n";
+				std::cerr << "create CF_Polygon from " << infile << " failed\n";
 			}
 		}
 	}
@@ -36,7 +40,7 @@ private:
 	bool create_(std::istream& in) {
 		in >> v_num;
 		if(v_num <= 2) {
-			std::cerr << "Invalid: polygon point number <= 2 !!\n";
+			std::cerr << "Invalid: CF_Polygon point number <= 2 !!\n";
 			return false;
 		}
 		points.resize(v_num);

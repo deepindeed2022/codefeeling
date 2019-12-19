@@ -1,5 +1,5 @@
-#include <dl/extend_op.h>
 #include <gtest/gtest.h>
+#include <dl/extend_op.h>
 #include "test_api.h"
 
 TEST(DLExtendOp, NMS) {

@@ -19,7 +19,7 @@ TEST(cpp_concept, sizeof_class)
     // printf("%ld, %ld, %ld\n", sizeof(A), sizeof(B), sizeof(C));
     ASSERT_EQ(1uL, sizeof(A));
     ASSERT_EQ(1uL, sizeof(B));
-#if defined(_WIN32) || defined(__x86__)
+#ifdef __x86__
     ASSERT_EQ(4, sizeof(C));
 #else
     ASSERT_EQ(8, sizeof(C));

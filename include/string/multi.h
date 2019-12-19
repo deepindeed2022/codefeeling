@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <functional>
 #include <cwctype>
+#include <cctype>
+
 std::string string_multi_op(std::string& s1, std::string& s2);
 // split: receives a char delimiter; returns a vector of strings
 // By default ignores repeated delimiters, unless argument rep == 1.

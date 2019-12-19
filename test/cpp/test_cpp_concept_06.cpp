@@ -21,11 +21,10 @@ TEST(cpp_concept, init_class_param)
 	// a.Print();
 #ifndef _WIN32
 	ASSERT_EQ(2, a.get_n1());
-	ASSERT_EQ(0, a.get_n2());
 #else
 	ASSERT_NE(2, a.get_n1());
-	ASSERT_NE(0, a.get_n2());
 #endif
+	ASSERT_EQ(0, a.get_n2());
 }
 /*****************************************************************************
 	答案：输出n1是一个随机的数字，n2为0。
