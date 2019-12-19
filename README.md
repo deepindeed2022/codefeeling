@@ -35,6 +35,10 @@ Before there were computers, there were algorithms. But now that there are compu
 - recursion-tree method
 - master method
 
+## CMake 
+
+工欲善其事必先利其器。CMake学习项目，`cmaketest`
+
 ## HOW TO RUN
 `mkdir build && cd build`
 `cmake -DTEST=1 .. && make -j4 && make install`

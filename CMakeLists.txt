@@ -90,3 +90,6 @@ IF(TEST)
     TARGET_LINK_LIBRARIES(test_practise 
         PUBLIC ${CMAKE_PROJECT_NAME}_s gtest ${TARGET_OS_LINK_LIBS})
 ENDIF()
+
+ADD_EXECUTABLE(mthread_queue src/mthread_queue/bufferqueue.cpp)
+TARGET_LINK_LIBRARIES(mthread_queue PUBLIC ${TARGET_OS_LINK_LIBS})
