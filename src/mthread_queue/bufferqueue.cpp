@@ -13,7 +13,7 @@ void get_packet(WorkersQueue& packet_scale) {
 		packet_scale.popProducer(buffer);
 		fprintf(stderr, "%s", buffer.data);
 		char b[100];
-		snprintf(b, 100, "get_packet %d\n", i++);
+		snprintf(b, 100, ">>>>>> get_packet %d\n", i++);
 		memcpy(buffer.data, b, sizeof(b));
 		packet_scale.pushConsumer(buffer);
 		if(i > 1000) break;
@@ -27,7 +27,7 @@ void get_scale(WorkersQueue& packet_scale) {
 		packet_scale.popConsumer(buffer);
 		fprintf(stderr, "%s", buffer.data);
 		char b[100];
-		snprintf(b, 100, "scale %d\n", i++);
+		snprintf(b, 100, "-------------------- scale %d\n", i++);
 		memcpy(buffer.data, b, sizeof(b));
 		packet_scale.pushProducer(buffer);
 		// char c;
