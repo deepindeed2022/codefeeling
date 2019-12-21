@@ -35,9 +35,17 @@ Before there were computers, there were algorithms. But now that there are compu
 - recursion-tree method
 - master method
 
+## cppbasic & cpp template
+- test/test_cpp_comcept_*.cpp
+- cpp/cpp_template_*.cpp
+- cpp/cpp_meta*.
+- cpp/test_cpp_concept_*.cpp
+
 ## CMake 
 
 工欲善其事必先利其器。CMake学习项目，`cmaketest`
+- create package
+- findpackage to use 3rdparty libs 
 
 ## HOW TO RUN
 `mkdir build && cd build`
@@ -107,3 +115,40 @@ In file included from /usr/lib/gcc/x86_64-linux-gnu/4.9/include/x86intrin.h:27:0
 可能是你在函数定义的地方少写了";"[^1]
 
 [^1]: http://www.cplusplus.com/forum/general/108022/
+
+2. linux可以运行的程序，在windows下有大量的标准库相关的编译错误。
+
+```
+1>D:\Repo\codefeeling\src\dl\op.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+2>D:\Repo\codefeeling\src\dl\op.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+1>D:\Repo\codefeeling\include\dl/op.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+2>D:\Repo\codefeeling\include\dl/op.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+1>D:\Repo\codefeeling\src\dl\op.cpp(8): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+2>D:\Repo\codefeeling\src\dl\op.cpp(8): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+2>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2065: 'x': undeclared identifier
+1>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2065: 'x': undeclared identifier
+2>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2065: 'negative_slope': undeclared identifier
+1>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2065: 'negative_slope': undeclared identifier
+1>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2672: 'std::min': no matching overloaded function found
+2>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2672: 'std::min': no matching overloaded function found
+1>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2780: '_Ty std::min(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+2>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2780: '_Ty std::min(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+2>  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\algorithm(3654): note: see declaration of 'std::min'
+1>  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\algorithm(3654): note: see declaration of 'std::min'
+2>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2780: 'const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+1>D:\Repo\codefeeling\src\dl\op.cpp(32): error C2780: 'const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+2>  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\algorithm(3625): note: see declaration of 'std::min'
+1>  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\algorithm(3625): note: see declaration of 'std::min'
+2>D:\Repo\codefeeling\src\dl\op.cpp(33): error C2059: syntax error: 'return'
+1>D:\Repo\codefeeling\src\dl\op.cpp(33): error C2059: syntax error: 'return'
+2>D:\Repo\codefeeling\src\dl\op.cpp(51): error C2059: syntax error: '}'
+1>D:\Repo\codefeeling\src\dl\op.cpp(51): error C2059: syntax error: '}'
+2>D:\Repo\codefeeling\src\dl\op.cpp(51): error C2143: syntax error: missing ';' before '}'
+1>D:\Repo\codefeeling\src\dl\op.cpp(51): error C2143: syntax error: missing ';' before '}'
+```
+上述这些错误，归根是由于`warning C4819`造成的。
+
+|code| description | 备注|
+|----|----| ----|
+|Warning C4819|The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss|将文件保存为utf8 with Bom|
+|warning C4244|'return': conversion from '__int64' to 'int', possible loss of data|使用`static_cast<int>`|
