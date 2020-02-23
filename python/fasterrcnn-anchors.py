@@ -55,17 +55,17 @@ def _mkanchors(ws, hs, x_ctr, y_ctr):
 
 
 if __name__ == '__main__':
-    ratios = [0.5, 1, 2]
-    scales = [8]
-    strides = [4, 8, 16, 32 ,64]
+    ratios = [0.4, 1, 2.5] # anchor_ratios
+    scales = [1, 1.5298, 2.3402, 3.5801, 5.4769, 8.3786, 12]
+    strides = [16]         # detection_stride, config->DetectionStride_W
     for stride in strides:
         anchors = get_anchors_over_grid(ratios, scales, stride)
         #print(anchors)
         h, w = anchors.shape
         print("["),
-        for i in xrange(h):
+        for i in range(h):
         	print("["),
-        	for j in xrange(w - 1):
-        		print("{},".format(anchors[i][j])),
-        	print("{}],".format(anchors[i][w-1]))
+        	for j in range(w - 1):
+        		print("{},".format(anchors[i][j]),),
+        	print("{}],".format(anchors[i][w-1])),
         print("]")
